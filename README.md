@@ -9,6 +9,7 @@
 
 
   getTargetByShopsAndExpireance()
+
   возвращает всех касиров ATB в городе Львов, которые имеют больше 5 лет опыта и раньше работыли в Silpo или Arsen
 
   ULR:  /api/v1/cashier/target?shop=SILPO,ARSEN&city=Lviv&expireance=5
@@ -17,6 +18,7 @@
 
 
   getTargetByTargetShopAndCashRegister()
+
   который возвращает всех кассиров магазина ATB по адресу Шевенко 100, которые работают на кассах с нечетным числом понедельникам в ночную смену (23:00 - 07:00)
 
   URL: /api/v1/shop/target/ATB?city=Dnipro&address=Шевенко100&workDay=MONDAY&shift=NIGHT&even_odd=ODD
