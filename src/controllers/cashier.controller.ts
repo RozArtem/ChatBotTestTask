@@ -105,7 +105,7 @@ export class CashierController {
 
     }
 
-    //@GET api/v1/cashier/target?shop={}&expireance={}
+    //@GET /api/v1/cashier/target?shop={ , }&city={}&expireance={}
     getTarget = async (req: Request & IReqQueryTargetShopandExpireance, res: Response, next: NextFunction) => {
 
         try {

@@ -5,6 +5,7 @@ import { Cashier } from "../models/cashier.model";
 import { CreatCashierDTO } from "./dto/creat-casier.dto";
 import { updateCashierDTO } from "./dto/update-cashier.dto";
 import { Op } from "sequelize";
+import { ShopClass } from "../types/shop/shop.iterface";
 
 
 
@@ -138,11 +139,14 @@ export class CashierService {
         }
     }
 
-    async getTargetByShopsAndExpireance(shop: string, expireance: string, city: string): Promise<Cashier[]> {
+    
+
+    async getTargetByShopsAndExpireance(shop: ShopClass, expireance: string, city: string): Promise<Cashier[]> {
 
         try {
 
-
+            const shopForOr = shop.split(',')
+            console.log(shopForOr)
 
             const targetCashiers = await this.cashierRepository.findAll({
 
@@ -151,7 +155,9 @@ export class CashierService {
                         [Op.gt]: expireance
                     },
                     city,
-                    previousWorkPlaces: shop
+                    previousWorkPlaces: {
+                        [Op.or]: shopForOr
+                    }
                 }
                 
             })
@@ -164,6 +170,7 @@ export class CashierService {
         }
 
     }
+
 
 
   
