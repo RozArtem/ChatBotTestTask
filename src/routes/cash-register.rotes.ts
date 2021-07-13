@@ -1,4 +1,4 @@
-import { CashierController } from '../controllers/cashier.controller';
+
 import { Router } from 'express';
 import { CashRegisterController } from '../controllers/cash-register.controller';
 

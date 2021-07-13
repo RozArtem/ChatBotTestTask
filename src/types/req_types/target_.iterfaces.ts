@@ -1,5 +1,5 @@
-import { EvenOddProperty } from "types/cash-register/cash-register.iterface";
-import { ShopClass } from "types/shop/shop.iterface";
+import { EvenOddProperty } from "../cash-register/cash-register.iterface";
+import { ShopClass } from "../shop/shop.iterface";
 import { ShiftTime, WorksDay } from "../cashier/cashier.iterface";
 
 export interface IReqQueryTargetShopandExpireance {

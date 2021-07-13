@@ -1,8 +1,8 @@
 
 import { Repository } from "sequelize-typescript";
-import { EvenOddProperty } from "types/cash-register/cash-register.iterface";
-import { ShiftTime, WorksDay } from "types/cashier/cashier.iterface";
-import { ShopClass } from "types/shop/shop.iterface";
+import { EvenOddProperty } from "../types/cash-register/cash-register.iterface";
+import { ShiftTime, WorksDay } from "../types/cashier/cashier.iterface";
+import { ShopClass } from "../types/shop/shop.iterface";
 import { v4 as uuidv4 } from 'uuid';
 import { sequalize } from "../config/database";
 import { Shop } from "../models/shop.model";
