@@ -1,5 +1,6 @@
 import express, { Application } from 'express';
 import path from 'path';
+import { sequalize } from "./config/database";
 
 
 
@@ -20,7 +21,8 @@ const start = async () => {
 
     try {
 
-      
+        
+        await sequalize.sync();
         app.listen(PORT, () => { console.log(`Server is running on ${PORT}`) })
     } catch (e) {
 
