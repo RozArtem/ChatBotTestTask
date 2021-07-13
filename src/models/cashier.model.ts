@@ -22,6 +22,9 @@ export class Cashier extends Model<ICashier, ICreateCashierAtrr> {
     @Column({ type: DataType.ENUM({ values: Object.keys(Sex) }) })
     sex: Sex;
 
+    @Column({type:DataType.STRING, allowNull: false})
+    city: string
+
     @Column({ type: DataType.INTEGER })
     yearsOfExperience: number
 

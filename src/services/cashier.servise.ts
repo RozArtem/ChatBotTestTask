@@ -138,7 +138,7 @@ export class CashierService {
         }
     }
 
-    async getTargetByShopsAndExpireance(shop: string, expireance: string): Promise<Cashier[]> {
+    async getTargetByShopsAndExpireance(shop: string, expireance: string, city: string): Promise<Cashier[]> {
 
         try {
 
@@ -150,6 +150,7 @@ export class CashierService {
                     yearsOfExperience: {
                         [Op.gt]: expireance
                     },
+                    city,
                     previousWorkPlaces: shop
                 }
                 

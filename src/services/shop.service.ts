@@ -146,7 +146,8 @@ export class ShopService {
         even_odd: EvenOddProperty,
         address: string,
         shift: ShiftTime,
-        workDay:  WorksDay
+        workDay:  WorksDay,
+        city: string
         ): Promise<Shop[]> {
 
         try {
@@ -156,6 +157,7 @@ export class ShopService {
             const targetCashiers = await this.shopRepository.findAll({
                 where :{
                     name: shop,
+                    city,
                     address
                 },
                 include: [{

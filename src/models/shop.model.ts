@@ -15,6 +15,9 @@ export class Shop extends Model<IShop, IShopCreateAtrr> {
     @Column({ type: DataType.ENUM({ values: Object.keys(ShopClass) }), allowNull: false })
     name: ShopClass
 
+    @Column({type:DataType.STRING, allowNull: false})
+    city: string
+    
     @Column({ type: DataType.STRING, allowNull: false })
     address: string
 

@@ -5,6 +5,7 @@ export interface IShop {
 
     id: string
     name: ShopClass
+    city: string
     address: string
     cashiers: ICashier[]
     cash_registers: ICashRegister[]
@@ -14,6 +15,7 @@ export interface IShop {
 export interface IShopCreateAtrr {
     id: string
     name: ShopClass
+    city: string
     address: string
 }
 

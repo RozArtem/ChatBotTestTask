@@ -6,6 +6,7 @@ export interface ICashier {
     fullName: string
     age: number
     sex: Sex
+    city: string
     yearsOfExperience: number
     shift: ShiftTime
     worksDay: WorksDay[]
@@ -21,6 +22,7 @@ export interface ICreateCashierAtrr {
     fullName: string
     age: number
     sex: Sex
+    city: string
     yearsOfExperience: number
     previousWorkPlaces: ShopClass | null
 }
