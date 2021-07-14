@@ -10,8 +10,8 @@ router.get('/',  shopController.getAll);
 router.post('/', shopController.create)
 // /api/v1/shop/target/:shop?city=''&address=''&workDay=''&shift=''&even_odd=''
 router.get('/target/:shop', shopController.getTargetByTargetShop)
-router.get('/:id', shopController.getOne)
 router.put('/:id', shopController.update);
+router.get('/:id', shopController.getOne)
 router.delete('/:id', shopController.delete);
 
 

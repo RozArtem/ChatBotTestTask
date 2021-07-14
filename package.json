@@ -5,7 +5,8 @@
   "main": "app.ts",
   "scripts": {
     "start:dev": "cross-env NODE_ENV=dev  nodemon",
-    "start:prod": "cross-env NODE_ENV=prod && tsc && node dist/app.js"
+    "build": "tsc",
+    "start": "cross-env NODE_ENV=prod  node dist/app.js"
   },
   "repository": {
     "type": "git",
