@@ -12,7 +12,7 @@
 
   возвращает всех касиров ATB в городе Львов, которые имеют больше 5 лет опыта и раньше работыли в Silpo или Arsen
 
-  ULR:  /api/v1/cashier/target?shop=SILPO,ARSEN&city=Lviv&expireance=5
+  URL:  /api/v1/cashier/target?shop=SILPO,ARSEN&city=Lviv&expireance=5
 
   Executing (default): SELECT "id", "fullName", "age", "sex", "city", "yearsOfExperience", "shift", "worksDay", "previousWorkPlaces", "currentWorkPlace_shopID",  "fixedCashRegister", "createdAt", "updatedAt" FROM "cashier" AS "Cashier" WHERE "Cashier"."yearsOfExperience" > '5' AND "Cashier"."city" = 'Lviv' AND ("Cashier"."previousWorkPlaces" = 'SILPO' OR "Cashier"."previousWorkPlaces" = 'ARSEN')
 
