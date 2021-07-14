@@ -5,6 +5,9 @@
 Технологии которые использовались для выполнения:
   TypeScript, Express, typescript-sequlize, sequlize, database: PostgreSQL
 
+В корне проекта 
+docker-compose up --build
+
 Результаты дополнительных методов:
 
 
