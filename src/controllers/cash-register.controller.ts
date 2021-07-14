@@ -1,10 +1,10 @@
 
-
 import { Response, Request, NextFunction } from 'express';
 import { CreatCashRegisterDTO } from '../services/dto/creat-cash_register.dto';
 import { UpdateCashRegisterDTO } from '../services/dto/update-cash_register.dto';
 import { CashRegisterService } from '../services/cash-register.service';
 import { ICashRegisterIDfromParams } from '../types/req_types/param_id.iterfaces';
+import { IQueryOffsetCount } from '../types/req_types/query_pagination.iterface';
 
 
 
@@ -35,11 +35,14 @@ export class CashRegisterController {
 
     }
 
-    getAll = async (req: Request, res: Response, next: NextFunction) => {
+    getAll = async (req: Request & IQueryOffsetCount, res: Response, next: NextFunction) => {
 
         try {
-
-            const cashRegisters = await this.cashRegisterService.getCashRegisters()
+            const {offset, count} = req.query
+            const cashRegisters = await this.cashRegisterService.getCashRegisters(
+                count,
+                offset
+            )
 
 
             res.status(200)

@@ -41,7 +41,7 @@ export class CashierService {
 
     }
 
-    async getAllCashier(count = 10, offset = 0): Promise<Cashier[]> {
+    async getAllCashier(count: number = 10, offset: number = 0): Promise<Cashier[]> {
 
         try {
 
@@ -49,6 +49,9 @@ export class CashierService {
 
                 offset: (Number(offset)),
                 limit: (Number(count)),
+                order: [
+                    ['fullName', 'ASC'],
+                ]
             })
 
             return casiers
@@ -139,9 +142,12 @@ export class CashierService {
         }
     }
 
-    
 
-    async getTargetByShopsAndExpireance(shop: ShopClass, expireance: string, city: string): Promise<Cashier[]> {
+
+    async getTargetByShopsAndExpireance(
+        shop: ShopClass, expireance: string, city: string,
+        count: number = 10 , offset: number = 10
+    ): Promise<Cashier[]> {
 
         try {
 
@@ -158,8 +164,13 @@ export class CashierService {
                     previousWorkPlaces: {
                         [Op.or]: shopForOr
                     }
-                }
-                
+                },
+                offset: (Number(offset)),
+                limit: (Number(count)),
+                order: [
+                    ['fullName', 'ASC'],
+                ]
+
             })
 
             return targetCashiers
@@ -173,5 +184,5 @@ export class CashierService {
 
 
 
-  
+
 }

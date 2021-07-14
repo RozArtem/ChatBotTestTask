@@ -13,6 +13,8 @@ WORKDIR /app
 
 COPY ["package.json","package-lock.json*", "./"]
 
+RUN npm install 
+
 COPY --from=builder ./app/dist ./dist
 
 EXPOSE 8080

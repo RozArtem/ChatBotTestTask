@@ -5,6 +5,7 @@ import { Response, Request, NextFunction } from 'express';
 import { updateCashierDTO } from '../services/dto/update-cashier.dto';
 import { IParamCashierID } from '../types/req_types/param_id.iterfaces';
 import { IReqQueryTargetShopandExpireance } from '../types/req_types/target_.iterfaces';
+import { IQueryOffsetCount } from '../types/req_types/query_pagination.iterface';
 
 
 
@@ -38,10 +39,15 @@ export class CashierController {
 
     }
 
-    getAll = async (req: Request, res: Response, next: NextFunction) => {
+    getAll = async (req: Request & IQueryOffsetCount, res: Response, next: NextFunction) => {
 
         try {
-            const cashiers = await this.cashierService.getAllCashier()
+
+            const {offset, count} = req.query
+            const cashiers = await this.cashierService.getAllCashier(
+                count,
+                offset
+            )
 
             res.status(200)
             res.send(cashiers)
@@ -106,13 +112,14 @@ export class CashierController {
     }
 
     //@GET /api/v1/cashier/target?shop={ , }&city={}&expireance={}
-    getTarget = async (req: Request & IReqQueryTargetShopandExpireance, res: Response, next: NextFunction) => {
+    getTarget = async (req: Request & IReqQueryTargetShopandExpireance & IQueryOffsetCount
+        , res: Response, next: NextFunction) => {
 
         try {
 
-            const { shop, expireance, city } = req.query
+            const { shop, expireance, city, count, offset } = req.query
             const cashiers = await this.cashierService.getTargetByShopsAndExpireance(
-                shop, expireance, city
+                shop, expireance, city,  count, offset
             )
 
             res.status(200)

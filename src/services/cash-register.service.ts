@@ -38,7 +38,7 @@ export class CashRegisterService {
 
     }
 
-    async getCashRegisters(count = 10, offset = 0): Promise<CashRegister[]> {
+    async getCashRegisters(count: number = 10, offset: number = 0): Promise<CashRegister[]> {
 
         try {
 
@@ -46,6 +46,9 @@ export class CashRegisterService {
 
                 offset: (Number(offset)),
                 limit: (Number(count)),
+                order: [
+                    ['even_odd', 'ASC'],
+                ]
             })
 
             return cashRegisters

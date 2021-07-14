@@ -43,7 +43,7 @@ export class ShopService {
 
     }
 
-    async getAllShops(count = 10, offset = 0): Promise<Shop[]> {
+    async getAllShops(count: number = 10, offset: number = 0): Promise<Shop[]> {
 
         try {
 
@@ -51,6 +51,9 @@ export class ShopService {
 
                 offset: (Number(offset)),
                 limit: (Number(count)),
+                order: [
+                    ['name', 'ASC'],
+                ]
             })
 
             return shops
@@ -114,7 +117,7 @@ export class ShopService {
 
 
         } catch (error) {
-            return error
+            return error.message
         }
     }
 
@@ -146,16 +149,16 @@ export class ShopService {
         even_odd: EvenOddProperty,
         address: string,
         shift: ShiftTime,
-        workDay:  WorksDay,
+        workDay: WorksDay,
         city: string
-        ): Promise<Shop[]> {
+    ): Promise<Shop> {
 
         try {
 
 
 
-            const targetCashiers = await this.shopRepository.findAll({
-                where :{
+            const targetCashiers = await this.shopRepository.findOne({
+                where: {
                     name: shop,
                     city,
                     address
@@ -171,19 +174,25 @@ export class ShopService {
                             shift,
                             worksDay: workDay
                         }
-                    }]
-                }]
+                    }],
+
+                }],
+
             })
+            if (!targetCashiers) {
+
+                throw new Error('Can not find target cashiers')
+            }
 
             return targetCashiers
 
         } catch (error) {
 
-            return error.message
+            return error
         }
 
     }
 
 
-  
+
 }

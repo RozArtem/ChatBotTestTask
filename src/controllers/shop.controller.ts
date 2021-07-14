@@ -5,6 +5,7 @@ import { CreatShopDTO } from '../services/dto/creat-shop.dto';
 import { updateShopDTO } from '../services/dto/update-shop.dto';
 import { IParamShopID } from '../types/req_types/param_id.iterfaces';
 import { IReqQueryParamsTargetShopAndCashRegister } from '../types/req_types/target_.iterfaces';
+import { IQueryOffsetCount } from '../types/req_types/query_pagination.iterface';
 
 
 
@@ -36,11 +37,15 @@ export class ShopController {
        
     }
 
-    getAll = async (req: Request, res: Response, next: NextFunction) => {
+    getAll = async (req: Request & IQueryOffsetCount, res: Response, next: NextFunction) => {
 
         try {
 
-            const shops = await this.shopService.getAllShops()
+            const {offset, count} = req.query
+            const shops = await this.shopService.getAllShops(
+               count,
+               offset
+            )
 
             res.status(200)
             res.send(shops)
